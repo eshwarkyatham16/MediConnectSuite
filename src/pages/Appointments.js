@@ -14,7 +14,6 @@ const columns = [
     field: "appointmentDate",
     headerName: "Appointment Date",
     width: 200,
-    type: "date",
   },
   {
     field: "status",
@@ -43,135 +42,12 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    doctorName: "Dr. Smith",
-    appointmentDate: new Date("2024-04-25"),
-    status: "Confirmed",
-  },
-  {
-    id: 2,
-    doctorName: "Dr. Johnson",
-    appointmentDate: new Date("2024-04-26"),
-    status: "Pending",
-  },
-  {
-    id: 3,
-    doctorName: "Dr. Brown",
-    appointmentDate: new Date("2024-04-27"),
-    status: "Canceled",
-  },
-  {
-    id: 4,
-    doctorName: "Dr. White",
-    appointmentDate: new Date("2024-04-28"),
-    status: "Confirmed",
-  },
-  {
-    id: 5,
-    doctorName: "Dr. Green",
-    appointmentDate: new Date("2024-04-29"),
-    status: "Pending",
-  },
-  {
-    id: 6,
-    doctorName: "Dr. Black",
-    appointmentDate: new Date("2024-04-30"),
-    status: "Confirmed",
-  },
-  {
-    id: 7,
-    doctorName: "Dr. Gray",
-    appointmentDate: new Date("2024-05-01"),
-    status: "Pending",
-  },
-  {
-    id: 8,
-    doctorName: "Dr. Red",
-    appointmentDate: new Date("2024-05-02"),
-    status: "Canceled",
-  },
-  {
-    id: 9,
-    doctorName: "Dr. Blue",
-    appointmentDate: new Date("2024-05-03"),
-    status: "Confirmed",
-  },
-  {
-    id: 10,
-    doctorName: "Dr. Yellow",
-    appointmentDate: new Date("2024-05-04"),
-    status: "Pending",
-  },
-  {
-    id: 11,
-    doctorName: "Dr. Purple",
-    appointmentDate: new Date("2024-05-05"),
-    status: "Confirmed",
-  },
-  {
-    id: 12,
-    doctorName: "Dr. Orange",
-    appointmentDate: new Date("2024-05-06"),
-    status: "Pending",
-  },
-  {
-    id: 13,
-    doctorName: "Dr. Pink",
-    appointmentDate: new Date("2024-05-07"),
-    status: "Canceled",
-  },
-  {
-    id: 14,
-    doctorName: "Dr. Brown",
-    appointmentDate: new Date("2024-05-08"),
-    status: "Confirmed",
-  },
-  {
-    id: 15,
-    doctorName: "Dr. White",
-    appointmentDate: new Date("2024-05-09"),
-    status: "Pending",
-  },
-  {
-    id: 16,
-    doctorName: "Dr. Green",
-    appointmentDate: new Date("2024-05-10"),
-    status: "Confirmed",
-  },
-  {
-    id: 17,
-    doctorName: "Dr. Black",
-    appointmentDate: new Date("2024-05-11"),
-    status: "Pending",
-  },
-  {
-    id: 18,
-    doctorName: "Dr. Gray",
-    appointmentDate: new Date("2024-05-12"),
-    status: "Canceled",
-  },
-  {
-    id: 19,
-    doctorName: "Dr. Red",
-    appointmentDate: new Date("2024-05-13"),
-    status: "Confirmed",
-  },
-  {
-    id: 20,
-    doctorName: "Dr. Blue",
-    appointmentDate: new Date("2024-05-14"),
-    status: "Pending",
-  },
-];
-
 export default function Appointments() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .get("https://669d8e7615704bb0e3064c25.mockapi.io/api/appointments")
       .then((response) => {
         setData(response.data);
         console.log(response);
@@ -188,7 +64,15 @@ export default function Appointments() {
             <div className="px-5 pt-3">
               <div className="row">
                 <div className="col-8 d-flex flex-column justify-content-center">
-                  <h3>Welcome Eshwar!</h3>
+                  <h3>
+                    Welcome{" "}
+                    {
+                      ["Eshwar", "Kalyan", "Manasa", "Praveen"][
+                        Math.floor(Math.random() * 4)
+                      ]
+                    }
+                    !
+                  </h3>
                   <span className="mb-4">
                     Get your latest update for the last 7 days
                   </span>
@@ -287,7 +171,7 @@ export default function Appointments() {
             <h3 className="header">My Appointments</h3>
             <div>
               <DataGrid
-                rows={rows}
+                rows={data}
                 columns={columns}
                 initialState={{
                   pagination: {

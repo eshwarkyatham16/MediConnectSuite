@@ -70,160 +70,8 @@ const columns = [
   },
 ];
 
-const rows = [
-  {
-    id: 1,
-    doctorName: "Dr. Smith",
-    appointmentDate: "2024-04-18",
-    treatment: "Physiotherapy",
-    diagnosis: "Chronic back pain",
-    nextAppointment: "2024-05-20",
-    notes: "Patient showed improvement",
-    status: "Completed",
-  },
-  {
-    id: 2,
-    doctorName: "Dr. Jones",
-    appointmentDate: "2024-04-15",
-    treatment: "General Checkup",
-    diagnosis: "Healthy",
-    nextAppointment: "2024-10-15",
-    notes: "Annual checkup - no issues found",
-    status: "Ongoing",
-  },
-  {
-    id: 3,
-    doctorName: "Dr. Green",
-    appointmentDate: "2024-04-10",
-    treatment: "Dental Cleaning",
-    diagnosis: "Cavity",
-    nextAppointment: "2024-04-24",
-    notes: "Requires follow-up for cavity filling",
-    status: "Ongoing",
-  },
-  {
-    id: 4,
-    doctorName: "Dr. Black",
-    appointmentDate: "2024-03-22",
-    treatment: "Vaccination",
-    diagnosis: "Due for annual flu shot",
-    nextAppointment: null,
-    notes: "Patient needs to schedule next vaccination",
-    status: "Completed",
-  },
-  {
-    id: 5,
-    doctorName: "Dr. Blue",
-    appointmentDate: "2024-04-05",
-    treatment: "Orthopedic Consultation",
-    diagnosis: "Arthritis",
-    nextAppointment: "2024-04-27",
-    notes: "Discuss surgical options",
-    status: "Canceled",
-  },
-  {
-    id: 6,
-    doctorName: "Dr. Blue",
-    appointmentDate: "2024-03-02",
-    treatment: "Dermatology Review",
-    diagnosis: "Myopia",
-    nextAppointment: null,
-    notes: "Monitor blood pressure monthly",
-    status: "Ongoing",
-  },
-  {
-    id: 7,
-    doctorName: "Dr. Harris",
-    appointmentDate: "2024-04-21",
-    treatment: "Neurological Exam",
-    diagnosis: "High blood pressure",
-    nextAppointment: null,
-    notes: "Annual checkup - no issues found",
-    status: "Ongoing",
-  },
-  {
-    id: 8,
-    doctorName: "Dr. Brown",
-    appointmentDate: "2024-04-06",
-    treatment: "ENT Checkup",
-    diagnosis: "Migraines",
-    nextAppointment: "2024-04-26",
-    notes: "Annual checkup - no issues found",
-    status: "Completed",
-  },
-  {
-    id: 9,
-    doctorName: "Dr. Harris",
-    appointmentDate: "2024-03-28",
-    treatment: "Ophthalmology Review",
-    diagnosis: "Migraines",
-    nextAppointment: "2024-09-23",
-    notes: "Recommended stress management techniques",
-    status: "Completed",
-  },
-  {
-    id: 10,
-    doctorName: "Dr. Jones",
-    appointmentDate: "2024-03-15",
-    treatment: "ENT Checkup",
-    diagnosis: "Chronic back pain",
-    nextAppointment: "2024-07-17",
-    notes: "Discuss surgical options",
-    status: "Ongoing",
-  },
-  {
-    id: 11,
-    doctorName: "Dr. Jones",
-    appointmentDate: "2024-03-07",
-    treatment: "Dermatology Review",
-    diagnosis: "Sinusitis",
-    nextAppointment: "2024-07-04",
-    notes: "Recommended stress management techniques",
-    status: "Completed",
-  },
-  {
-    id: 12,
-    doctorName: "Dr. Lee",
-    appointmentDate: "2024-03-30",
-    treatment: "General Checkup",
-    diagnosis: "Eczema",
-    nextAppointment: null,
-    notes: "Patient showed improvement",
-    status: "Ongoing",
-  },
-  {
-    id: 13,
-    doctorName: "Dr. Lee",
-    appointmentDate: "2024-04-07",
-    treatment: "Neurological Exam",
-    diagnosis: "Healthy",
-    nextAppointment: "2024-05-20",
-    notes: "Prescription for new glasses issued",
-    status: "Ongoing",
-  },
-  {
-    id: 14,
-    doctorName: "Dr. White",
-    appointmentDate: "2024-03-05",
-    treatment: "ENT Checkup",
-    diagnosis: "Sinusitis",
-    nextAppointment: null,
-    notes: "Monitor blood pressure monthly",
-    status: "Ongoing",
-  },
-  {
-    id: 15,
-    doctorName: "Dr. Harris",
-    appointmentDate: "2024-03-10",
-    treatment: "Orthopedic Consultation",
-    diagnosis: "Sinusitis",
-    nextAppointment: null,
-    notes: "Patient showed improvement",
-    status: "Completed",
-  },
-];
 export default function History() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [rowSelectionModel, setRowSelectionModel] = React.useState([]);
   const [open, setOpen] = React.useState(false);
 
@@ -251,7 +99,7 @@ export default function History() {
 
   useEffect(() => {
     axios
-      .get("https://jsonplaceholder.typicode.com/todos/1")
+      .get("https://669d8e7615704bb0e3064c25.mockapi.io/api/history")
       .then((response) => {
         setData(response.data);
         console.log(response);
@@ -278,7 +126,7 @@ export default function History() {
         <Button
           endIcon={<SendIcon />}
           variant="outlined"
-          disabled={!rowSelectionModel.length}
+          disabled={!rowSelectionModel?.length}
           onClick={handleClickOpen}
         >
           Send Invite
@@ -286,7 +134,7 @@ export default function History() {
       </div>
       <DataGrid
         checkboxSelection
-        rows={rows}
+        rows={data}
         columns={columns}
         onRowSelectionModelChange={(newRowSelectionModel) => {
           console.log(newRowSelectionModel);
