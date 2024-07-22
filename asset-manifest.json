@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MediConnectSuite/static/css/main.99e7aa28.css",
-    "main.js": "/MediConnectSuite/static/js/main.aa6e6db5.js",
+    "main.js": "/MediConnectSuite/static/js/main.3283316f.js",
     "static/js/453.285605ab.chunk.js": "/MediConnectSuite/static/js/453.285605ab.chunk.js",
     "static/media/roboto-latin-500-normal.woff2": "/MediConnectSuite/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/MediConnectSuite/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
@@ -61,11 +61,11 @@
     "static/media/roboto-greek-ext-400-normal.woff": "/MediConnectSuite/static/media/roboto-greek-ext-400-normal.f708607d2a7290fb8bfa.woff",
     "static/media/roboto-greek-ext-700-normal.woff": "/MediConnectSuite/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "main.99e7aa28.css.map": "/MediConnectSuite/static/css/main.99e7aa28.css.map",
-    "main.aa6e6db5.js.map": "/MediConnectSuite/static/js/main.aa6e6db5.js.map",
+    "main.3283316f.js.map": "/MediConnectSuite/static/js/main.3283316f.js.map",
     "453.285605ab.chunk.js.map": "/MediConnectSuite/static/js/453.285605ab.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.99e7aa28.css",
-    "static/js/main.aa6e6db5.js"
+    "static/js/main.3283316f.js"
   ]
 }
