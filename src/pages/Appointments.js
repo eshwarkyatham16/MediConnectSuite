@@ -80,7 +80,7 @@ export default function Appointments() {
                 </div>
                 <div className="col-4 d-flex  justify-content-end">
                   <img
-                    src="/assets/imgs/docback.png"
+                    src={`${process.env.PUBLIC_URL}/assets/imgs/docback.png`}
                     width="200"
                     height="200"
                   />
@@ -91,14 +91,22 @@ export default function Appointments() {
           <div className="my-3"></div>
           <div class="vitalcard-container" style={{ padding: 0 }}>
             <div class="vitalcard-app vitalcard-temperature">
-              <img src="/assets/imgs/tempremov.png" width={50} height={50} />
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/imgs/tempremov.png`}
+                width={50}
+                height={50}
+              />
               <div class="vitalcard-header">Temperature</div>
               <div class="vitalcard-main">98 ° F</div>
               <div class="vitalcard-graph"></div>
               <div class="vitalcard-footer">Normal</div>
             </div>
             <div class="vitalcard-app vitalcard-spo2">
-              <img src="/assets/imgs/ssssss.png" width={50} height={50} />
+              <img
+                src={`${process.env.PUBLIC_URL}/assets/imgs/ssssss.png`}
+                width={50}
+                height={50}
+              />
               <div class="vitalcard-header">SpO2</div>
               <div class="vitalcard-main">96%</div>
               <div class="vitalcard-graph"></div>
@@ -106,7 +114,7 @@ export default function Appointments() {
             </div>
             <div class="vitalcard-app vitalcard-heart-rate">
               <img
-                src="/assets/imgs/haertbeatremoved.png"
+                src={`${process.env.PUBLIC_URL}/assets/imgs/haertbeatremoved.png`}
                 width={50}
                 height={50}
               />

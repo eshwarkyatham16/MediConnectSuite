@@ -1,4 +1,4 @@
 {
-  "appService.defaultWebAppToDeploy": "undefined/subscriptions/0e2e200e-a536-46aa-b48d-6269efed2644/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/team-echo",
-  "appService.deploySubpath": "."
+  "appService.defaultWebAppToDeploy": "/subscriptions/0e2e200e-a536-46aa-b48d-6269efed2644/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/team-echo",
+  "appService.deploySubpath": "build"
 }

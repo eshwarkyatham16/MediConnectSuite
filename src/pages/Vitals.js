@@ -630,35 +630,55 @@ function Vitals() {
       <h3>Vitals & Reports</h3>
       <div class="vitalcard-container">
         <div class="vitalcard vitalcard-temperature">
-          <img src="/assets/imgs/tempremov.png" width={50} height={50} />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/imgs/tempremov.png`}
+            width={50}
+            height={50}
+          />
           <div class="vitalcard-header">Temperature</div>
           <div class="vitalcard-main">98 ° F</div>
           <div class="vitalcard-graph"></div>
           <div class="vitalcard-footer">Normal</div>
         </div>
         <div class="vitalcard vitalcard-spo2">
-          <img src="/assets/imgs/ssssss.png" width={50} height={50} />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/imgs/ssssss.png`}
+            width={50}
+            height={50}
+          />
           <div class="vitalcard-header">SpO2</div>
           <div class="vitalcard-main">96%</div>
           <div class="vitalcard-graph"></div>
           <div class="vitalcard-footer">Normal</div>
         </div>
         <div class="vitalcard vitalcard-heart-rate">
-          <img src="/assets/imgs/haertbeatremoved.png" width={50} height={50} />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/imgs/haertbeatremoved.png`}
+            width={50}
+            height={50}
+          />
           <div class="vitalcard-header">Heart Rate</div>
           <div class="vitalcard-main">72 bpm</div>
           <div class="vitalcard-graph"></div>
           <div class="vitalcard-footer">Normal</div>
         </div>
         <div class="vitalcard vitalcard-blood-pressure">
-          <img src="/assets/imgs/spotremov.png" width={50} height={50} />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/imgs/spotremov.png`}
+            width={50}
+            height={50}
+          />
           <div class="vitalcard-header">Blood Pressure</div>
           <div class="vitalcard-main">120/72</div>
           <div class="vitalcard-graph"></div>
           <div class="vitalcard-footer">Good</div>
         </div>
         <div class="vitalcard vitalcard-breathing-rate">
-          <img src="/assets/imgs/lungsremov.png" width={50} height={50} />
+          <img
+            src={`${process.env.PUBLIC_URL}/assets/imgs/lungsremov.png`}
+            width={50}
+            height={50}
+          />
           <div class="vitalcard-header">Breathing Rate</div>
           <div class="vitalcard-main">12</div>
           <div class="vitalcard-graph"></div>

@@ -3,11 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {
-  RouterProvider,
-  createBrowserRouter,
-  Navigate,
-} from "react-router-dom";
+import { RouterProvider, createHashRouter, Navigate } from "react-router-dom";
 import SignIn from "./pages/Auth/SignIn";
 import Appointments from "./pages/Appointments";
 import History from "./pages/History";
@@ -20,7 +16,7 @@ import UnAuthorized from "./pages/UnAuthorized";
 import DoctorLogin from "./pages/Auth/DoctorLogin";
 import WelcomeDoctor from "./pages/WelcomeDoctor";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App />,
