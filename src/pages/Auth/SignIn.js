@@ -105,6 +105,7 @@ export default function SignIn() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value="user@gmail.com"
               />
               <TextField
                 margin="normal"
@@ -115,6 +116,7 @@ export default function SignIn() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value="Password@123"
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -140,6 +142,10 @@ export default function SignIn() {
                   </Link>
                 </Grid>
               </Grid>
+              <p>
+                Note: For the time-being we didn't implement the authentication
+                part completely. Please use the default username and password.
+              </p>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
