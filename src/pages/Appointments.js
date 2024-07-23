@@ -1,11 +1,21 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button, Paper } from "@mui/material";
+import {
+  Button,
+  Paper,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  IconButton,
+} from "@mui/material";
 import { LineChart } from "@mui/x-charts/LineChart";
 import { Chip } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import AddIcon from "@mui/icons-material/Add";
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -44,6 +54,12 @@ const columns = [
 
 export default function Appointments() {
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [form, setForm] = useState({
+    doctorName: "",
+    appointmentDate: "",
+    status: "Pending",
+  });
 
   useEffect(() => {
     axios
@@ -54,6 +70,28 @@ export default function Appointments() {
       })
       .catch((error) => {});
   }, []);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleSubmit = () => {
+    axios
+      .post(
+        "https://669d8e7615704bb0e3064c25.mockapi.io/api/appointments",
+        form
+      )
+      .then((response) => {
+        setData([...data, response.data]);
+        alert("Appointment added!");
+        handleClose();
+      })
+      .catch((error) => {});
+  };
 
   return (
     <div>
@@ -89,39 +127,39 @@ export default function Appointments() {
             </div>
           </Paper>
           <div className="my-3"></div>
-          <div class="vitalcard-container" style={{ padding: 0 }}>
-            <div class="vitalcard-app vitalcard-temperature">
+          <div className="vitalcard-container" style={{ padding: 0 }}>
+            <div className="vitalcard-app vitalcard-temperature">
               <img
                 src={`${process.env.PUBLIC_URL}/assets/imgs/tempremov.png`}
                 width={50}
                 height={50}
               />
-              <div class="vitalcard-header">Temperature</div>
-              <div class="vitalcard-main">98 ° F</div>
-              <div class="vitalcard-graph"></div>
-              <div class="vitalcard-footer">Normal</div>
+              <div className="vitalcard-header">Temperature</div>
+              <div className="vitalcard-main">98 ° F</div>
+              <div className="vitalcard-graph"></div>
+              <div className="vitalcard-footer">Normal</div>
             </div>
-            <div class="vitalcard-app vitalcard-spo2">
+            <div className="vitalcard-app vitalcard-spo2">
               <img
                 src={`${process.env.PUBLIC_URL}/assets/imgs/ssssss.png`}
                 width={50}
                 height={50}
               />
-              <div class="vitalcard-header">SpO2</div>
-              <div class="vitalcard-main">96%</div>
-              <div class="vitalcard-graph"></div>
-              <div class="vitalcard-footer">Normal</div>
+              <div className="vitalcard-header">SpO2</div>
+              <div className="vitalcard-main">96%</div>
+              <div className="vitalcard-graph"></div>
+              <div className="vitalcard-footer">Normal</div>
             </div>
-            <div class="vitalcard-app vitalcard-heart-rate">
+            <div className="vitalcard-app vitalcard-heart-rate">
               <img
                 src={`${process.env.PUBLIC_URL}/assets/imgs/haertbeatremoved.png`}
                 width={50}
                 height={50}
               />
-              <div class="vitalcard-header">Heart Rate</div>
-              <div class="vitalcard-main">72 bpm</div>
-              <div class="vitalcard-graph"></div>
-              <div class="vitalcard-footer">Normal</div>
+              <div className="vitalcard-header">Heart Rate</div>
+              <div className="vitalcard-main">72 bpm</div>
+              <div className="vitalcard-graph"></div>
+              <div className="vitalcard-footer">Normal</div>
             </div>
           </div>
         </div>
@@ -176,7 +214,19 @@ export default function Appointments() {
         </div>
         <div className="col-6">
           <div className="p-3 card">
-            <h3 className="header">My Appointments</h3>
+            <h3 className="header">
+              My Appointments{" "}
+              <span style={{ float: "right" }}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<AddIcon />}
+                  onClick={handleOpen}
+                >
+                  Add Appointment
+                </Button>
+              </span>{" "}
+            </h3>
             <div>
               <DataGrid
                 rows={data}
@@ -194,6 +244,40 @@ export default function Appointments() {
           </div>
         </div>
       </div>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Add New Appointment</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            name="doctorName"
+            label="Doctor Name"
+            type="text"
+            fullWidth
+            variant="outlined"
+            value={form.doctorName}
+            onChange={handleChange}
+          />
+          <TextField
+            margin="dense"
+            name="appointmentDate"
+            label="Appointment Date"
+            type="datetime-local"
+            fullWidth
+            variant="outlined"
+            value={form.appointmentDate}
+            onChange={handleChange}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit} color="primary">
+            Add
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
